@@ -36,5 +36,11 @@ public class School {
 		alice.addInstrument(garklein);
 		alice.addInstrument(soprano);
 		alice.addInstrument(tenor);
+
+		Teacher carrie = new Teacher("Carrie", 0);
+		carrie.addInstrument(piano);
+
+		Teacher damian = new Teacher("Damian", 0);
+		damian.addInstrument(fentrop);
 	}
 }
