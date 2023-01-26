@@ -11,12 +11,14 @@ public class Teacher { // Make generic {
 	private String name;
 	private int maxStudents;
 	private Set instruments; // Make generic
+	private HashSet<Student> students;
 	
 	public Teacher(String name, int maxStudents) {
 		super();
 		this.name = name;
 		this.maxStudents = maxStudents;
 		this.instruments = new HashSet<>();
+		this.students = new HashSet<>();
 	}
 
 	public String getName() {
@@ -33,6 +35,22 @@ public class Teacher { // Make generic {
 
 	public void setMaxStudents(int maxStudents) {
 		this.maxStudents = maxStudents;
+	}
+
+	public HashSet<Student> getStudents(){
+		return this.students;
+	}
+
+	public boolean addStudent(Student student){
+		if (this.students.size() >= this.maxStudents){
+			return false;
+		} else {
+			return this.students.add(student);
+		}
+	}
+
+	public void removeStudents(){
+		this.students = new HashSet<Student>();
 	}
 
 	public Set getInstruments() { // Make generic

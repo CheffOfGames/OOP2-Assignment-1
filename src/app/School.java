@@ -2,6 +2,7 @@ package app;
 
 import domain.Student;
 import domain.Teacher;
+import domain.Schedule;
 import instruments.ElectricalStringedInstrument;
 import instruments.Flute;
 import instruments.Note;
