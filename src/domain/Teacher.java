@@ -7,10 +7,10 @@ import java.util.Set;
 import instruments.Instrument;
 import util.NotYetImplementedException;
 
-public class Teacher { // Make generic {
+public class Teacher {
 	private String name;
 	private int maxStudents;
-	private Set instruments; // Make generic
+	private Set<Instrument> instruments;
 	
 	public Teacher(String name, int maxStudents) {
 		super();
@@ -35,20 +35,20 @@ public class Teacher { // Make generic {
 		this.maxStudents = maxStudents;
 	}
 
-	public Set getInstruments() { // Make generic
-		throw new NotYetImplementedException();
+	public Set getInstruments() {
+		return this.instruments;
 	}
 
-	public boolean addInstrument(Object instrument) { // Make generic
+	public boolean addInstrument(Instrument instrument) {
 		return instruments.add(instrument);
 	}
 	
-	public boolean removeInstrument(Object instrument) { // Make generic
+	public boolean removeInstrument(Instrument instrument) {
 		return instruments.remove(instrument);
 	}
 	
-	public boolean teaches(Object instrument) { // Make generic
-		for (Object in: instruments) {
+	public boolean teaches(Instrument instrument) {
+		for (Instrument in: instruments) {
 			if (in.equals(instrument)) {
 				return true;
 			}
