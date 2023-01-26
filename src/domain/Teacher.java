@@ -7,16 +7,18 @@ import java.util.Set;
 import instruments.Instrument;
 import util.NotYetImplementedException;
 
-public class Teacher { // Make generic {
+public class Teacher {
 	private String name;
 	private int maxStudents;
-	private Set instruments; // Make generic
+	private HashSet<Student> students;
+	private Set<Instrument> instruments;
 	
 	public Teacher(String name, int maxStudents) {
 		super();
 		this.name = name;
 		this.maxStudents = maxStudents;
 		this.instruments = new HashSet<>();
+		this.students = new HashSet<>();
 	}
 
 	public String getName() {
@@ -35,20 +37,37 @@ public class Teacher { // Make generic {
 		this.maxStudents = maxStudents;
 	}
 
-	public Set getInstruments() { // Make generic
-		throw new NotYetImplementedException();
+	public HashSet<Student> getStudents(){
+		return this.students;
 	}
 
-	public boolean addInstrument(Object instrument) { // Make generic
+	public boolean addStudent(Student student){
+		if (this.teaches(student.getInstrument())){
+			if (this.students.size() < this.maxStudents){
+				return this.students.add(student);
+			}
+		}
+		return false;
+	}
+
+	public void removeStudents(){
+		this.students = new HashSet<>();
+	}
+    
+	public Set<Instrument> getInstruments() {
+		return this.instruments;
+	}
+
+	public boolean addInstrument(Instrument instrument) {
 		return instruments.add(instrument);
 	}
 	
-	public boolean removeInstrument(Object instrument) { // Make generic
+	public boolean removeInstrument(Instrument instrument) {
 		return instruments.remove(instrument);
 	}
 	
-	public boolean teaches(Object instrument) { // Make generic
-		for (Object in: instruments) {
+	public boolean teaches(Instrument instrument) {
+		for (Instrument in: instruments) {
 			if (in.equals(instrument)) {
 				return true;
 			}
@@ -59,4 +78,11 @@ public class Teacher { // Make generic {
 	public BigDecimal getHourlyWage() {
 		throw new NotYetImplementedException();
 	}
+
+    @Override
+    public String toString() {
+        return "Teacher [name=" + name + ", maxStudents=" + maxStudents + ", students=" + students + ", instruments="
+                + instruments + "]";
+    }
+	
 }
