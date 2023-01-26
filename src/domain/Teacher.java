@@ -42,18 +42,19 @@ public class Teacher {
 	}
 
 	public boolean addStudent(Student student){
-		if (this.students.size() >= this.maxStudents){
-			return false;
-		} else {
-			return this.students.add(student);
+		if (this.teaches(student.getInstrument())){
+			if (this.students.size() < this.maxStudents){
+				return this.students.add(student);
+			}
 		}
+		return false;
 	}
 
 	public void removeStudents(){
-		this.students = new HashSet<Student>();
+		this.students = new HashSet<>();
 	}
     
-	public Set getInstruments() {
+	public Set<Instrument> getInstruments() {
 		return this.instruments;
 	}
 
@@ -77,4 +78,11 @@ public class Teacher {
 	public BigDecimal getHourlyWage() {
 		throw new NotYetImplementedException();
 	}
+
+    @Override
+    public String toString() {
+        return "Teacher [name=" + name + ", maxStudents=" + maxStudents + ", students=" + students + ", instruments="
+                + instruments + "]";
+    }
+	
 }

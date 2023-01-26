@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 import instruments.Instrument;
 import static domain.Experience.*;
 
-public class Student {
+public class Student implements Comparable<Student> {
 	private String name;
 	private Instrument instrument;
 	private BigDecimal offer;
@@ -68,9 +68,15 @@ public class Student {
 	public void setExperience(Experience experience) {
 		this.experience = experience;
 	}
-
+	
 	@Override
-	public String toString() {
-		return "Student [name=" + name + ", instrument=" + instrument + "]";
+    public String toString() {
+        return "Student [name=" + name + ", instrument=" + instrument + ", offer=" + offer + ", experience="
+                + experience + "]";
+    }
+
+    @Override
+	public int compareTo(Student o) {
+		return this.getExperience().compareTo(o.getExperience());
 	}
 }

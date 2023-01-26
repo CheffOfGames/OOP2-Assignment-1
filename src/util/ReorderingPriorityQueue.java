@@ -12,11 +12,11 @@ public class ReorderingPriorityQueue<Student> extends PriorityQueue<Student> {
     }
 
     public PriorityQueue<Student> setComparator(Comparator<Student> c){
-        PriorityQueue<Student> newqueue = new PriorityQueue<Student>(c);
+        PriorityQueue<Student> newQueue = new PriorityQueue<Student>(c);
         for (Student in: this.usedQueue){
-            newqueue.add(in);
+            newQueue.add(in);
         }
-        this.usedQueue = newqueue;
+        this.usedQueue = newQueue;
         return this.usedQueue;
     }
     
