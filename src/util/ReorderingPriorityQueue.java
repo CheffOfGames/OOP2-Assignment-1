@@ -2,23 +2,22 @@ package util;
 
 import java.util.Comparator;
 import java.util.PriorityQueue;
-import java.util.Queue;
 
-public class ReorderingPriorityQueue<Student> extends PriorityQueue {
+public class ReorderingPriorityQueue<Student> extends PriorityQueue<Student> {
 
-    PriorityQueue<Student> queue;
+    PriorityQueue<Student> usedQueue;
 
     public ReorderingPriorityQueue() {
-        this.queue = new PriorityQueue<Student>();
+        this.usedQueue = new PriorityQueue<Student>();
     }
 
-    public PriorityQueue setComparator(){
-        PriorityQueue<Student> newqueue = new PriorityQueue<Student>((Comparator)new OfferComparator());
-        for (Student in: this.queue){
+    public PriorityQueue<Student> setComparator(Comparator<Student> c){
+        PriorityQueue<Student> newqueue = new PriorityQueue<Student>(c);
+        for (Student in: this.usedQueue){
             newqueue.add(in);
         }
-        this.queue = newqueue;
-        return this.queue;
+        this.usedQueue = newqueue;
+        return this.usedQueue;
     }
     
 }
