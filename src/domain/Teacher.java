@@ -52,10 +52,6 @@ public class Teacher {
 	public void removeStudents(){
 		this.students = new HashSet<Student>();
 	}
-
-	public Set getInstruments() { // Make generic
-		throw new NotYetImplementedException();
-    }
     
 	public Set getInstruments() {
 		return this.instruments;
