@@ -2,6 +2,7 @@ package domain;
 
 import java.math.BigDecimal;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Queue;
 
@@ -11,8 +12,8 @@ import util.ReorderingPriorityQueue;
 public class Schedule {
 	private static BigDecimal basePrice = new BigDecimal("10.0");
 	private int year;
-	private Queue waitList;
-	private Map students; // Make generic
+	private Queue<Student> waitList;
+	private Map<Teacher, HashSet<Student>> students;
 
 	public Schedule(int year) {
 		this.year = year;
@@ -40,23 +41,24 @@ public class Schedule {
 		waitList.add(student);
 	}
 	
-	public void withdrawFromList(Student student) { // Implement
-		throw new NotYetImplementedException();
+	public void withdrawFromList(Student student) {
+		waitList.remove(student);
 	}
 
-	public void addStudent(Teacher teacher, Student student) { // Make generic and implement
-		throw new NotYetImplementedException();
+	public void addStudent(Teacher teacher, Student student) {
+		teacher.addStudent(student);
 	}
 	
-	public void addTeacher(Teacher teacher) { // Make generic and implement
-		throw new NotYetImplementedException();
+	public void addTeacher(Teacher teacher) {
+		teacher.removeStudents();
+		students.put(teacher,teacher.getStudents());
 	}
 	
-	public void removeTeacher(Teacher teacher) { // Make generic and implement
-		throw new NotYetImplementedException();
+	public void removeTeacher(Teacher teacher) {
+		students.remove(teacher);
 	}
 	
-	public void endOfYear() { // Implement
-		throw new NotYetImplementedException();
+	public void endOfYear() {
+		this.students = new HashMap<>();
 	}
 }
